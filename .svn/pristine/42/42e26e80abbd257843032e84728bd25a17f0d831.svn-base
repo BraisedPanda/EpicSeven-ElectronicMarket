@@ -1,0 +1,38 @@
+package demo.category.entity;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import demo.goods.entity.Goods;
+
+public class Category {
+	private String cid;
+	private String cname;
+	private Set<Goods> goodsSet = new HashSet();
+	public String getCid() {
+		return cid;
+	}
+	public void setCid(String cid) {
+		this.cid = cid;
+	}
+	public String getCname() {
+		return cname;
+	}
+	public void setCname(String cname) {
+		this.cname = cname;
+	}
+	public Set<Goods> getGoodsSet() {
+		return goodsSet;
+	}
+	public void setGoodsSet(Set<Goods> goodsSet) {
+		this.goodsSet = goodsSet;
+	}
+	@Override
+	public String toString() {
+		return "Category [cid=" + cid + ", cname=" + cname + ", goodsSet="
+				+ goodsSet + "]";
+	}
+	
+	
+	
+}

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+	<!-- 配置c3p0连接池 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<!-- 注入属性值 -->
+		<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+		<property name="jdbcUrl" value="jdbc:mysql:///demo01"></property>
+		<property name="user" value="root"></property>
+		<property name="password" value="123456"></property>
+				
+	</bean>
+	<!-- 1.配置bihernate事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager ">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 2.开启事务注解 -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+
+    
+	<!-- 配置hibernate -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+	<property name="dataSource" ref="dataSource"></property>
+	<property name="configLocations" value="classpath:hibernate.cfg.xml"></property>
+	</bean>
+	
+	
+	<!-- 创建HibernateTemplate模板，并注入属性 -->
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- 引入外部的action配置 -->
+	 <import resource="classpath:demo/user/action/UserAction.xml"/>  
+	 <import resource="classpath:demo/goods/action/GoodsAction.xml"/>  
+	 
+</beans>

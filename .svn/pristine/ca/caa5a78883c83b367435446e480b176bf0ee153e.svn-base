@@ -1,0 +1,26 @@
+package demo.goods.service;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import demo.goods.dao.GoodsDao;
+import demo.goods.entity.Goods;
+@Transactional
+public class GoodsService {
+	private GoodsDao goodsDao;
+	public void setGoodsDao(GoodsDao goodsDao) {
+		this.goodsDao = goodsDao;
+	}
+
+	public Goods findGoodsById(String gid) {
+		Goods goods = goodsDao.findGoodsById(gid);
+		return goods;
+	}
+
+	public List<Goods> findAllHeros() {
+		List<Goods> goodsList = goodsDao.findAllHeros();
+		return goodsList;
+	}
+
+}

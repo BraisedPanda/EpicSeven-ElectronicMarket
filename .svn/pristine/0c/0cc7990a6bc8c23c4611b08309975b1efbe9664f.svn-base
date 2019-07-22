@@ -1,0 +1,86 @@
+package demo.user.action;
+
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts2.ServletActionContext;
+
+import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
+
+import demo.user.entity.User;
+import demo.user.service.UserService;
+
+public class UserAction extends ActionSupport implements ModelDriven<User> {
+	private User user= new User();
+	public User getModel() {
+		
+		return user;
+	}
+	private UserService userService;
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+	/*
+	 * 构造获取response,session等方法
+	 */
+	public HttpServletRequest getRequest(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		return request;
+	}
+	public HttpServletResponse getResponse(){
+		HttpServletResponse response = ServletActionContext.getResponse();
+		return response;
+	}
+	public HttpSession getSession(){
+		HttpSession session = getRequest().getSession();
+		return session;
+	}
+	/*
+	 * 用户注册方法
+	 */
+	public String regist(){
+		
+		userService.add(user);
+		HttpServletRequest request = getRequest();
+		request.setAttribute("msg", user.getUsername()+",恭喜您注册成功");	
+		return "regist";
+	}
+	/*
+	 * 检测用户注册合法性
+	 */
+	public String modify() throws Exception{
+		HttpServletRequest  request = getRequest();
+		HttpServletResponse response = getResponse();
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		User user = userService.findUserByName(username);
+		
+		
+		//验证用户名
+		// 0 ：表示用户名不能为空  1：表示该用户名已经被注册过了 2:表示用户名长度有问题 3：表示用户名可用
+		if(username==null || username.trim().isEmpty()){
+			response.getWriter().print("0");
+		}else if(user != null){
+			response.getWriter().print("1");
+		}else if(username.length()<2 || username.length()>=15){
+			response.getWriter().print("2");
+		}
+		else {
+			response.getWriter().print("3");
+		}
+		
+		
+		
+		return NONE;
+		
+	}
+	
+	
+	
+	
+	
+}

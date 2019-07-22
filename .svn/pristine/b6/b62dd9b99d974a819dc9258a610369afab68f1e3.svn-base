@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+ <hibernate-mapping>
+
+ <class name="demo.order.entity.Order" table="t_order">
+	
+	<id name="oid" column="oid">
+		<generator class="uuid"></generator>
+	</id>
+	
+	<property name="ordertime" column="ordertime"></property>
+	<property name="state" column="state"></property>
+	<property name="address" column="address"></property>
+	<property name="total" column="total"></property>
+	
+	<!-- 配置外键，一对多的关系 -->
+	<set name="orderItemSet" cascade="save-update,delete" lazy="false">
+		<key column="oid"></key>
+		<one-to-many class="demo.order.entity.OrderItem"/>
+	</set>
+	<!-- 多个订单对应同一个用户 -->
+	<many-to-one name="user" class="demo.user.entity.User" column="uid" lazy="false"></many-to-one>
+ </class>
+   
+   
+ </hibernate-mapping>

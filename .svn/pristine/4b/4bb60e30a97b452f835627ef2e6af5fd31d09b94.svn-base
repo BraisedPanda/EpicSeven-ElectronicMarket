@@ -1,0 +1,31 @@
+package demo.goods.dao;
+
+import java.util.List;
+
+import org.springframework.orm.hibernate4.HibernateTemplate;
+
+import demo.goods.entity.Goods;
+
+public class GoodsDaoImpl implements GoodsDao {
+	private HibernateTemplate hibernateTemplate;
+	
+	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
+		this.hibernateTemplate = hibernateTemplate;
+	}
+	/*
+	 *根据gid查找物品
+	 */
+	public Goods findGoodsById(String gid) {
+		Goods goods = hibernateTemplate.get(Goods.class, gid);
+		
+		return goods;
+	}
+	/*
+	 * 查询所有的heros
+	 */
+	public List<Goods> findAllHeros() {
+		List<Goods> goodsList = (List<Goods>) hibernateTemplate.find("from Goods where cid=?", 1);
+		return goodsList;
+	}
+	
+}

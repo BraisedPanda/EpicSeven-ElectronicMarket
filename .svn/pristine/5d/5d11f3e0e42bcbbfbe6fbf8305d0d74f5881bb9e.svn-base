@@ -1,0 +1,50 @@
+package demo.goods.action;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts2.ServletActionContext;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+import demo.goods.entity.Goods;
+import demo.goods.service.GoodsService;
+
+public class GoodsAction extends ActionSupport {
+	private GoodsService goodsService;
+	public void setGoodsService(GoodsService goodsService) {
+		this.goodsService = goodsService;
+	}
+	public HttpServletRequest getRequest(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		return request;
+	}
+	public HttpSession getSession(){
+		HttpSession session = getRequest().getSession();
+		return session;
+	}
+	/*
+	 * 根据物品id查找物品
+	 */
+	public String findGoodsById(){
+		HttpServletRequest request = getRequest();
+		
+		String gid = request.getParameter("gid");
+		
+		Goods goods = goodsService.findGoodsById(gid);
+		request.setAttribute("goods", goods);
+		
+		return "findGoodsById";
+	}
+	/*
+	 * 查询所有英雄
+	 */
+	public String findAllHeros(){
+		HttpServletRequest request = getRequest();
+		List<Goods> goodsList = goodsService.findAllHeros();
+		request.setAttribute("goodsList", goodsList);
+		return "findAllHeros";
+	}
+}

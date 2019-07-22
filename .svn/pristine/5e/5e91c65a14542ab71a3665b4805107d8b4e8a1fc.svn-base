@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>更新日志.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+    2019-5-9 22:10:09
+    		今天上午正式开始这个项目，打算做成一个游戏商城的界面。到目前为止，主要完成了主界面前几部分的制作，
+    	明天开始着手做商品的展示界面，就是body的界面。
+    		晚上完成了注册界面功能的实现，主要是加了超链接。
+  </body>
+</html>

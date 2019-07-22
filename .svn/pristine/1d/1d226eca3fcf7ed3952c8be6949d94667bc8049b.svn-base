@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+ <hibernate-mapping>
+
+ <class name="demo.goods.entity.Goods" table="t_goods">
+	
+	<id name="gid" column="gid">
+		<generator class="uuid"></generator>
+	</id>
+	
+	<property name="gname" column="gname"></property>
+	<property name="price" column="price"></property>
+	<property name="introduction" column="introduction"></property>
+	<property name="detail" column="detail"></property>
+	<property name="image" column="image"></property>
+	<many-to-one name="category" class="demo.category.entity.Category"
+		column="cid" lazy="false">
+	</many-to-one>
+	<set name="orderItemSet" cascade="save-update,delete" inverse="true" lazy="false" >
+	<key column="gid"></key>
+	<one-to-many class="demo.order.entity.OrderItem"/>
+	</set>
+ </class>
+   
+   
+ </hibernate-mapping>

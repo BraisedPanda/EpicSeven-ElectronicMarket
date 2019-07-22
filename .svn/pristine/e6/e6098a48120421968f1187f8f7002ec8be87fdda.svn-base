@@ -1,0 +1,13 @@
+package demo.goods.dao;
+
+import java.util.List;
+
+import demo.goods.entity.Goods;
+
+public interface GoodsDao {
+
+	Goods findGoodsById(String gid);
+
+	List<Goods> findAllHeros();
+
+}

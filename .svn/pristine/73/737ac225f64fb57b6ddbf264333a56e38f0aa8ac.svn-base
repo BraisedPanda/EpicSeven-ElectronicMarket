@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="interceptor" namespace="/" extends="struts-default" >
+	<interceptors>
+	
+	<interceptor name="LoginInterceptor" class="demo.interceptor.LoginInterceptor"></interceptor>
+	
+	
+	</interceptors>
+	<global-results>
+		<result name="tologin">/user/login.jsp</result>
+	</global-results>
+		
+	
+	<!-- </package> -->	
+	
+	<!-- <package name="userStruts" namespace="/" extends="struts-default" > -->
+		 <!-- spring整合struts2之后，class不需要写全路径，写bean里面的id -->
+		<!-- 用户注册功能 -->
+		<action name="userAction_*"  class="userAction" method="{1}">
+		<result name="regist">/user/login.jsp</result>
+		<result name="login_success">/menu/main.jsp</result>
+		<result name="login_failed">/user/login.jsp</result>
+		<result name="quit">/menu/main.jsp</result>
+		
+		</action>
+		
+	<!-- </package>	 -->
+	<!-- 商品action的配置 -->
+	<!-- <package name="goodsStruts" namespace="/" extends="struts-default" > -->
+		
+		<action name="goodsAction_*"  class="goodsAction" method="{1}">
+		<result name="findGoodsById">/goods/detail.jsp</result> 
+		<result name="findAllHeros">/goods/list.jsp</result> 
+		
+		</action>
+		
+	<!-- </package>	 -->
+	<!-- 购物车action的配置 -->
+	<!-- <package name="cartStruts" namespace="/" extends="struts-default" > -->
+		
+		<action name="cartAction_*"  class="cartAction" method="{1}">
+		
+		<result name="add">/cart/detail.jsp</result>  
+		<result name="delete" >/cart/detail.jsp</result>
+		<result name="clear" >/cart/detail.jsp</result>
+		<result name="buy" >/order/detail.jsp</result>
+		
+		 <interceptor-ref name="LoginInterceptor"></interceptor-ref> 
+		 
+		</action>
+		
+	<!-- </package> -->
+	
+	<!-- 订单action的配置 -->
+	<!-- <package name="orderStruts" namespace="/" extends="struts-default" > -->
+		
+		<action name="orderAction_*"  class="orderAction" method="{1}">
+		
+		<result name="addToOrder">/order/detail.jsp</result>
+		<result name="myOrder">/order/myOrder.jsp</result>
+		 <interceptor-ref name="LoginInterceptor"></interceptor-ref>
+		
+		</action>
+	
+		
+	</package>		
+	
+</struts>
+

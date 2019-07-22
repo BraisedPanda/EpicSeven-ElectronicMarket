@@ -1,0 +1,211 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <base href="<%=basePath%>">
+    
+    <title>My JSP 'main.jsp' starting page</title>
+    
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+	<!--
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	-->
+	<style>
+		iframe{
+		width:100%;
+		
+		border:none;
+		height:100%;
+		}
+		body{
+		height:auto;
+		}
+		
+		.top_1{
+		height:40px;
+		border-bottom:1px solid gray;
+		
+		}
+		.top_2{
+		height:115px;
+		
+		}
+		
+		.body_1_1{
+		width:100%;
+		border-bottom:2px solid #f07c82;
+		height:40px;
+		} 
+		.detail{
+		
+		 margin-left:50px; 
+		height:600px;
+	
+		}
+ 		.foot{
+ 		height:200px;
+ 		margin-top:0px;
+ 		
+ 		}
+		*{
+		margin:0;
+		padding:0;
+		
+		}
+	
+		.top1{
+		position:relative;
+		left:50px;
+		top:2px;
+		font-size:15px;
+		
+		}
+		.detail{
+		
+		margin-top:10px;
+		height:500px;
+		width:auto;
+	
+		
+		}
+		.image{
+		margin-left:52px;
+		margin-top:20px;
+		float:left;
+		background:blue;
+		width:240px;
+		height:300px;
+		}
+		.describe{
+		margin-top:20px;
+		float:left;
+		margin-left:200px;
+		}
+		p{
+		margin-top:15px;
+		}
+		.price_border{
+		margin-top:15px;
+		background:#fff5f5;
+		width:300px;
+		height:50px;
+		position:relative;
+		}
+		.price{
+		position:absolute;
+		top:10px;
+		font-size:25px;
+		color:red;
+		}
+		.count{
+		margin-top:25px;
+		
+		}
+		.total{
+		margin-top:25px;
+		}
+		.operation{
+		margin-top:25px;
+		}
+		.buy,.cart{
+		display: inline-block; 
+    	width: 178px;
+    	height: 38px;
+    	border: 1px solid #c40000;
+   	
+   	 	color: #c40000;
+   		 line-height: 38px;
+   		 text-align: center;
+   	 	background-color: #ffeded;
+		}
+		
+		.cart{
+		margin-left:0px;
+		color:white;
+		background:gray;
+		border:1px solid gray;
+		}
+		
+		a{
+		text-decoration:none;
+		}
+		.cart1{
+		border-bottom:1px solid gray; 
+		width:100%;
+		height:auto;
+		float:left;
+		margin-left:0;
+		}
+	</style>
+	
+	
+  </head>
+  
+  <body>
+  <div class="top_1">
+    <iframe src="<c:url value='/menu/top_1.jsp'/>" class="top_1" ></iframe>
+   </div>
+    <div class="top_2">
+    <iframe src="<c:url value='/menu/top_2.jsp'/>" class="top_2"></iframe>
+    </div>
+   
+ 	<div class="body_1_1">
+    <iframe src="<c:url value='/cart/body_1_1.jsp'/>" class="center_1"></iframe>
+    </div>
+    <div class="detail">
+ 		
+  		<c:choose>
+  		<c:when test="${not empty sessionScope.cart.cartItem }">
+  		<c:forEach items="${sessionScope.cart.cartItem }" var="cartItem">
+  		<div class="cart1">
+  			 <div class="image"><img src="<c:url value='/${cartItem.goods.image }'/>"></div> 
+  				<div class="describe"> 
+  				
+  				<h1>${cartItem.goods.gname }</h1>
+  				<p>${cartItem.goods.introduction }</p>
+  				
+  				<div class="price_border"> 
+  					<span class="price">总计：<em>${cartItem.total }元</em></span>
+				</div>
+				<div class="count">
+					数量：${cartItem.count }<br>
+				</div>
+				<div class="total">
+					单价：<font color="red">${cartItem.goods.price }元</font>
+				</div>
+				<div class="operation">
+					<%-- <a class="buy" href="<c:url value='/orderAction_addToOrder'/>">立即购买</a> --%>
+					<a class="cart" href="<c:url value='/cartAction_delete?gid=${cartItem.goods.gid }'/>">删除</a>
+				
+				</div>
+				</div>
+				</div>
+		</c:forEach> 
+		</c:when>
+		<c:otherwise>
+		购物车里空空如也呢~
+		</c:otherwise>
+		</c:choose>		
+				
+  			</div>
+  		
+    	
+   
+      <div class="foot">
+    <iframe src="<c:url value='/menu/foot.jsp'/>" ></iframe>
+ 	 </div>  
+  		
+  		
+  </body>
+</html>

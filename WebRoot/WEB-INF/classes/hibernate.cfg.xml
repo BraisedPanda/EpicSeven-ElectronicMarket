@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+	<session-factory>
+		<!-- 
+		< 第一步：配置数据库信息（必须） >
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernate</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">123456</property>  
+		-->
+		
+		<!--第二步：配置hibernate信息 （可选）  -->
+		
+		<!--输出底层sql语句 -->
+		<property name="hibernate.show_sql">true</property>
+		<!--输出底层sql语句格式 -->
+		<property name="hibernate.format_sql">true</property>
+		<!-- 自动建表(有表更新，无表创建)  -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <!-- 配置数据库方言 -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+	
+		<!-- 第三部：把映射文件加载到核心文件中 -->
+		 <mapping resource="demo/user/entity/User.hbm.xml"/> 
+		 <mapping resource="demo/category/entity/Category.hbm.xml"/> 
+		 <mapping resource="demo/goods/entity/Goods.hbm.xml"/> 
+		 <mapping resource="demo/order/entity/Order.hbm.xml"/> 
+		 <mapping resource="demo/order/entity/OrderItem.hbm.xml"/> 
+		
+		
+	</session-factory>
+
+</hibernate-configuration>
+        

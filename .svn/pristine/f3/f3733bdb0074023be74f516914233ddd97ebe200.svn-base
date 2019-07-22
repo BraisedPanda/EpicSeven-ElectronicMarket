@@ -1,0 +1,160 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <base href="<%=basePath%>">
+    
+    <title>My JSP 'main.jsp' starting page</title>
+    
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+	<!--
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	-->
+	<style>
+		iframe{
+		width:100%;
+		/* border:1px solid gray; */
+		border:none;
+		height:100%;
+		}
+		*{
+		margin:0;
+		padding:0;
+		}
+		div{
+		width:100%;
+		
+		margin: 0 auto;
+		}
+		.top_1{
+		height:40px;
+		border-bottom:1px solid gray;
+		}
+		.top_2{
+		height:115px;
+		
+		}
+		.center_1{
+		height:40px;
+		border-bottom:2px solid #43b244;
+		}
+		.center_2{
+		width:100%;
+		height:390px; 
+		}
+		.body_1_1{
+		height:40px;
+		border-bottom:2px solid #43b244;
+		}
+ 		
+		.body_2_1{
+		margin-top:-400px;
+		height:40px;
+		border-bottom:2px solid #eeaa9c;
+		}
+ 		.body_3_1{
+		margin-top:-400px;
+		height:40px;
+		border-bottom:2px solid #bdaead;
+		}
+		.body_4_1{
+		margin-top:-400px;
+		height:40px;
+		border-bottom:2px solid #f0a1a8;
+		}
+		.body_5_1{
+		margin-top:-400px;
+		height:40px;
+		border-bottom:2px solid #815c94;
+		}
+		.body_6_1{
+		margin-top:-400px;
+		height:40px;
+		border-bottom:2px solid #2775b6;
+		}
+		.body_7_1{
+		margin-top:-400px;
+		height:40px;
+		border-bottom:2px solid #74787a;
+		}
+		.body_8_1{
+		margin-top:-400px;
+		height:40px;
+		border-bottom:2px solid #f9a633;
+		}
+	</style>
+  </head>
+  
+  <body>
+  <div class="top_1">
+    <iframe src="<c:url value='/menu/top_1.jsp'/>" class="top_1" ></iframe>
+   </div>
+    <div class="top_2">
+    <iframe src="<c:url value='/menu/top_2.jsp'/>" class="top_2"></iframe>
+    </div>
+    <div class="center_1">
+    <iframe src="<c:url value='/menu/center_1.jsp'/>" class="center_1"></iframe>
+    </div>
+    <div class="center_2">
+    <iframe src="<c:url value='/menu/center_2.jsp'/>" class="center_2"></iframe>
+    </div>
+    <div class="body_1_1">
+    <iframe src="<c:url value='/menu/body_1_1.jsp'/>" name="body_1_1"></iframe>
+    </div> 
+     <div class="body_1_2">
+    <iframe src="<c:url value='/menu/body_1_2.jsp'/>"></iframe>
+    </div>
+     <div class="body_2_1">
+    <iframe src="<c:url value='/menu/body_2_1.jsp'/>" name="body_2_1"></iframe>
+    </div> 
+     <div class="body_2_2">
+    <iframe src="<c:url value='/menu/body_2_2.jsp'/>"></iframe>
+    </div> 
+     <div class="body_3_1">
+    <iframe src="<c:url value='/menu/body_3_1.jsp'/>" name="body_3_1"></iframe>
+    </div> 
+     <div class="body_3_2">
+    <iframe src="<c:url value='/menu/body_3_2.jsp'/>"></iframe>
+    </div> 
+      <div class="body_4_1">
+    <iframe src="<c:url value='/menu/body_4_1.jsp'/>" name="body_4_1"></iframe>
+    </div> 
+     <div class="body_4_2">
+    <iframe src="<c:url value='/menu/body_4_2.jsp'/>"></iframe>
+    </div> 
+      <div class="body_5_1">
+    <iframe src="<c:url value='/menu/body_5_1.jsp'/>" name="body_5_1"></iframe>
+    </div> 
+     <div class="body_5_2">
+    <iframe src="<c:url value='/menu/body_5_2.jsp'/>"></iframe>
+    </div> 
+      <div class="body_6_1">
+    <iframe src="<c:url value='/menu/body_6_1.jsp'/>" name="body_6_1"></iframe>
+    </div> 
+     <div class="body_6_2">
+    <iframe src="<c:url value='/menu/body_6_2.jsp'/>"></iframe>
+    </div> 
+      <div class="body_7_1">
+    <iframe src="<c:url value='/menu/body_7_1.jsp'/>" name="body_7_1"></iframe>
+    </div> 
+     <div class="body_7_2">
+    <iframe src="<c:url value='/menu/body_7_2.jsp'/>"></iframe>
+    </div> 
+ 	  <div class="body_8_1">
+    <iframe src="<c:url value='/menu/body_8_1.jsp'/>" name="body_8_1"></iframe>
+    </div> 
+     <div class="body_8_2">
+    <iframe src="<c:url value='/menu/body_8_2.jsp'/>"></iframe>
+    </div> 
+  </body>
+</html>

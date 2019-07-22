@@ -1,0 +1,46 @@
+package demo.cart.action;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts2.ServletActionContext;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+import demo.cart.entity.Cart;
+import demo.cart.entity.CartItem;
+import demo.goods.entity.Goods;
+import demo.goods.service.GoodsService;
+
+public class CartAction extends ActionSupport{
+	private GoodsService goodsService;
+	
+	public void setGoodsService(GoodsService goodsService) {
+		this.goodsService = goodsService;
+	}
+
+	public HttpServletRequest getRequest(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		return request;
+	}
+	
+	public HttpSession getSession(){
+		HttpSession session = getRequest().getSession();
+		return session;
+	}
+	public String add(){
+		HttpServletRequest request = getRequest();
+		HttpSession session = getSession();
+		String gid = request.getParameter("gid");
+		String count = request.getParameter("count");
+		Cart cart = (Cart) session.getAttribute("cart");
+		CartItem cartItem = new CartItem();
+		Goods goods = goodsService.findGoodsById(gid);
+		cartItem.setGoods(goods);
+		cartItem.setCount(Integer.parseInt(count));
+		cart.add(cartItem);
+		session.setAttribute("cart", cart);
+		return "add";
+	}
+	
+}
