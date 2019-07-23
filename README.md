@@ -43,16 +43,16 @@
   ### 预览
   
 #### `登录界面`<br><br>
-![](https://github.com/BraisedPanda/Epic-Seven-Management-System/raw/master/display/2.jpg)<br><br><br>
+![](https://github.com/BraisedPanda/EpicSeven-ElectronicMarket/raw/master/display/2.jpg)<br><br><br>
 #### `首页`<br><br>
-![](https://github.com/BraisedPanda/Epic-Seven-Management-System/raw/master/display/1.jpg)<br><br><br>
+![](https://github.com/BraisedPanda/EpicSeven-ElectronicMarket/raw/master/display/1.jpg)<br><br><br>
 #### `商品列表`<br><br>
-![](https://github.com/BraisedPanda/Epic-Seven-Management-System/raw/master/display/6.jpg)<br><br><br>
+![](https://github.com/BraisedPanda/EpicSeven-ElectronicMarket/raw/master/display/6.jpg)<br><br><br>
 #### `修改用户`<br><br>
-![](https://github.com/BraisedPanda/Epic-Seven-Management-System/raw/master/display/3.jpg)<br><br><br>
+![](https://github.com/BraisedPanda/EpicSeven-ElectronicMarket/raw/master/display/3.jpg)<br><br><br>
 #### `购买页`<br><br>
-![](https://github.com/BraisedPanda/Epic-Seven-Management-System/raw/master/display/4.jpg)<br><br><br>
+![](https://github.com/BraisedPanda/EpicSeven-ElectronicMarket/raw/master/display/4.jpg)<br><br><br>
 #### `订单详细`<br><br>
-![](https://github.com/BraisedPanda/Epic-Seven-Management-System/raw/master/display/5.jpg)<br><br><br>
+![](https://github.com/BraisedPanda/EpicSeven-ElectronicMarket/raw/master/display/5.jpg)<br><br><br>
 
 
